@@ -90,6 +90,28 @@ void swapRows(string tempGrid[rows][cols], int row1, int row2) {
   }
 }
 
+// swap two cols...
+void swapCols(string tempGrid[rows][cols], int col1, int col2) {
+  tempGrid = sudoGrid;
+  string tmp = "";
+  for (int j = 0; j < rows; j++) {
+    tmp = tempGrid[j][col1];
+    tempGrid[j][col1] = tempGrid[j][col2];
+    tempGrid[j][col2] = tmp;
+  }
+}
+
+// check if item in row...
+bool isInRow(string tempGrid[N][N], string str) {
+  tempGrid = sudoGrid;
+  for (int i = 0; i < N; i++) {
+    if (tempGrid[N][i] == str) {
+      return true; // present in row...
+    }
+  }
+  return false; // not present in row...
+}
+
 int main() {
     starterInfo();
     printsudoGrid();
