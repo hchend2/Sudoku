@@ -1,5 +1,75 @@
+#include <ctime>
 #include <iostream>
+#include <stdlib.h>
+#include <string>
+#define N 9
+#define rows 9
+#define cols 9
 
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
+using std::to_string;
+
+string sudoGrid[N][N] = {
+
+    {"3", "0", "6", "5", "0", "8", "4", "0", "0"},
+    {"5", "2", "0", "0", "0", "0", "0", "0", "0"},
+    {"0", "8", "7", "0", "0", "0", "0", "3", "1"},
+    {"0", "0", "3", "0", "1", "0", "0", "8", "0"},
+    {"9", "0", "0", "8", "6", "3", "0", "0", "5"},
+    {"0", "5", "0", "0", "9", "0", "6", "0", "0"},
+    {"1", "3", "0", "0", "0", "0", "2", "5", "0"},
+    {"0", "0", "0", "0", "0", "0", "0", "7", "4"},
+    {"0", "0", "5", "2", "0", "6", "3", "0", "0"}
+};
+
+
+// print sudoku grid...
+string tempGrid[N][N] = {""};
+
+void printsudoGrid() {
+  int count1 = 1;
+  int count2 = 1;
+  cout << "********************************************************************"
+          "****"
+       << std::endl;
+  for (int i = 0; i < N; i++) {
+    cout << "*      |       |       *       |       |       *       |       |  "
+            "     *\n"
+         << "* ";
+    for (int j = 0; j < N; j++) {
+      if (sudoGrid[i][j] == "0") {
+        sudoGrid[i][j] = " ";
+      }
+      std::cout << " " << sudoGrid[i][j] << " ";
+      if (count1 % 3 == 0) {
+        std::cout << "  *  ";
+      } else {
+        std::cout << "  |  ";
+      }
+      count1++;
+    }
+    cout << endl
+         << "*      |       |       *       |       |       *       |       |  "
+            "     *"
+         << endl;
+    if (count2 % 3 == 0) {
+      cout << endl
+           << "****************************************************************"
+              "********"
+           << endl;
+    } else {
+      cout << endl
+           << "----------------------------------------------------------------"
+              "--------"
+           << endl;
+    }
+    count2++;
+  }
+}
 int main() {
   std::cout << "Hello World!\n";
+    printsudoGrid();
 }
