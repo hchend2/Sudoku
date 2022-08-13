@@ -26,8 +26,6 @@ string sudoGrid[N][N] = {
 };
 
 // print sudoku grid...
-string tempGrid[N][N] = {""};
-
 void printsudoGrid() {
   int count1 = 1;
   int count2 = 1;
