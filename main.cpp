@@ -116,7 +116,19 @@ bool isInCol(string tempGrid[N][N], string str) {
   }
   return false; // not present in col... 
 }
+// check if in 3x3 square...
+bool isInSquare(string tempGrid[N][N], int row, int col, string str) {
 
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+      if (tempGrid[row][col] == str) {
+        return true; // present in square...
+      } else {
+        return false; // not present in square...
+      }
+    }
+  }
+}
 int main() {
     starterInfo();
     printsudoGrid();
