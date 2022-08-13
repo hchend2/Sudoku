@@ -22,8 +22,7 @@ string sudoGrid[N][N] = {
     {"0", "5", "0", "0", "9", "0", "6", "0", "0"},
     {"1", "3", "0", "0", "0", "0", "2", "5", "0"},
     {"0", "0", "0", "0", "0", "0", "0", "7", "4"},
-    {"0", "0", "5", "2", "0", "6", "3", "0", "0"}
-};
+    {"0", "0", "5", "2", "0", "6", "3", "0", "0"}};
 
 // print sudoku grid...
 void printsudoGrid() {
@@ -68,11 +67,14 @@ void printsudoGrid() {
 }
 // start menu...
 void starterInfo() {
-    cout << endl << endl << "Welcom to our sudoku game, select an option below: \n"
-         << "    Enter 'p' if you want play manualy \n"
-         << "    Enter 's' if you want to auto solve the pezzul \n"
-         << "    Enter 'a' for animated solution \n"
-         << "    enter 'x' to exit game " << endl << endl;
+  cout << endl
+       << endl
+       << "Welcom to our sudoku game, select an option below: \n"
+       << "    Enter 'p' if you want play manualy \n"
+       << "    Enter 's' if you want to auto solve the pezzul \n"
+       << "    Enter 'a' for animated solution \n"
+       << "    enter 'x' to exit game " << endl
+       << endl;
 }
 // swap two rows...
 void swapRows(string tempGrid[rows][cols], int row1, int row2) {
@@ -112,7 +114,7 @@ bool isInCol(string tempGrid[N][N], string str) {
       return true; // present in col...
     }
   }
-  return false; // not present in col... 
+  return false; // not present in col...
 }
 // check if in 3x3 square...
 bool isInSquare(string tempGrid[N][N], int row, int col, string str) {
@@ -128,43 +130,42 @@ bool isInSquare(string tempGrid[N][N], int row, int col, string str) {
 }
 // some error messages if in row, col, or square ...
 void errorMessage(string sudoGrid[N][N], string str, int r, int c) {
-    if (isInRow(sudoGrid, str)) {
-         cout << "Is present in row, please try again " << endl;   
-    }
-    if (isInCol(sudoGrid, str)) {
-        cout << "Is present in col, please try again " << endl;
-    }
-    if (isInSquare(sudoGrid, r, c, str)) {
-        cout << "Is present in square, please try again " << endl;
-    }
-        
+  if (isInRow(sudoGrid, str)) {
+    cout << "Is present in row, please try again " << endl;
+  }
+  if (isInCol(sudoGrid, str)) {
+    cout << "Is present in col, please try again " << endl;
+  }
+  if (isInSquare(sudoGrid, r, c, str)) {
+    cout << "Is present in square, please try again " << endl;
+  }
 }
 // more error messages...
 void edgeCheck(int r, int c) {
-    if (r < 0 || r > 8) {
-        cout << "Invalid row... try again " << endl;
-        cout << "Enter row and col between 0 and 8 ";
-    }
-    if (c < 0 || c > 8) {
-        cout << "Invalid column... try again " << endl;
-        cout << "Enter row and col between 0 and 8 ";
-    }
+  if (r < 0 || r > 8) {
+    cout << "Invalid row... try again " << endl;
+    cout << "Enter row and col between 0 and 8: ";
+  }
+  if (c < 0 || c > 8) {
+    cout << "Invalid column... try again " << endl;
+    cout << "Enter row and col between 0 and 8: ";
+  }
 }
 // game logic...
 void play() {
-    int r, c, num;
-    cout << "Enter row and col between 0 and 8 ";
-    cin >> r >> c;
-    edgeCheck(r, c);
-    cout << "Enter number between 0 and 9 ";
-    cin >> num;
-    string str = to_string(num);
-    errorMessage(sudoGrid, str, r, c);
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            sudoGrid[r][c] = to_string(num);
-        }
+  int r, c, num;
+  cout << "Enter row and col between 0 and 8: ";
+  cin >> r >> c;
+  edgeCheck(r, c);
+  cout << "Enter number between 0 and 9: ";
+  cin >> num;
+  string str = to_string(num);
+  errorMessage(sudoGrid, str, r, c);
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
+      sudoGrid[r][c] = to_string(num);
     }
+  }
 }
 // first random number...
 int rand1() {
@@ -179,30 +180,48 @@ int rand2() {
   return num;
 }
 // check if the grid is full or not ...
-bool sudokuGridIsFull(string sudoGrid[][N]) {
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            if (sudoGrid[i][j] == "") {
-                return false; // sudogrid not full...
-            }
-        }
+bool sudokuGridIsFull() {
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
+      if (sudoGrid[i][j] == "") {
+        return false; // sudogrid not full...
+      }
     }
-    return true; // sudoGrid is full...
+  }
+  return true; // sudoGrid is full...
 }
 // check if a cell is empty or not ...
 void isCellEmpty(string sudoGrid[][N]) {
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            if (sudoGrid[i][j] != "") {
-                cout << "Cell occupied. Please select another cell *** " << endl;
-                return ;
-            }
-        }
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
+      if (sudoGrid[i][j] != "") {
+        cout << "Cell occupied. Please select another cell *** " << endl;
+        return;
+      }
     }
-    return;
+  }
+  return;
 }
 
 int main() {
+
+    char userInput;
+    int r, c, num;
+    
     starterInfo();
     printsudoGrid();
+    cin >> userInput;
+    if (userInput == 'x') {
+    cout << "***    Exiting the game    ***\n"
+         << "***        Goodby          ***" << endl
+         << endl;
+    exit(1);
+    }
+    if (userInput == 'p') {
+        cout << "You selected to manualy solve the sudoku" << endl;
+        while (true) {
+            play();
+            printsudoGrid();
+        }
+    }    
 }
