@@ -25,7 +25,6 @@ string sudoGrid[N][N] = {
     {"0", "0", "5", "2", "0", "6", "3", "0", "0"}
 };
 
-
 // print sudoku grid...
 string tempGrid[N][N] = {""};
 
@@ -69,7 +68,6 @@ void printsudoGrid() {
     count2++;
   }
 }
-
 // start menu...
 void starterInfo() {
     cout << endl << endl << "Welcom to our sudoku game, select an option below: \n"
@@ -78,7 +76,6 @@ void starterInfo() {
          << "    Enter 'a' for animated solution \n"
          << "    enter 'x' to exit game " << endl << endl;
 }
-
 // swap two rows...
 void swapRows(string tempGrid[rows][cols], int row1, int row2) {
   tempGrid = sudoGrid;
@@ -89,7 +86,6 @@ void swapRows(string tempGrid[rows][cols], int row1, int row2) {
     tempGrid[row2][i] = tmp;
   }
 }
-
 // swap two cols...
 void swapCols(string tempGrid[rows][cols], int col1, int col2) {
   tempGrid = sudoGrid;
@@ -100,7 +96,6 @@ void swapCols(string tempGrid[rows][cols], int col1, int col2) {
     tempGrid[j][col2] = tmp;
   }
 }
-
 // check if item in row...
 bool isInRow(string tempGrid[N][N], string str) {
   tempGrid = sudoGrid;
@@ -110,6 +105,16 @@ bool isInRow(string tempGrid[N][N], string str) {
     }
   }
   return false; // not present in row...
+}
+// check if item in col...
+bool isInCol(string tempGrid[N][N], string str) {
+  tempGrid = sudoGrid;
+  for (int j = 0; j < N; j++) {
+    if (tempGrid[j][N - 1] == str) {
+      return true; // present in col...
+    }
+  }
+  return false; // not present in col... 
 }
 
 int main() {
