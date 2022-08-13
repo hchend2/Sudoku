@@ -202,6 +202,21 @@ void isCellEmpty(string sudoGrid[][N]) {
   }
   return;
 }
+// generate new grid...
+void newGrid() {
+
+    int r1 = rand1();
+    int r2 = rand2();
+    string tmpGrid[N][N] = {""};
+    
+    tmpGrid[N - 1][N - 1] = sudoGrid[N - 1][N - 1];
+     for (int i = 0; i < 4; i++) {
+         cout << "*** New grid *** "<< endl;
+         swapRows(sudoGrid, r1, r2);
+         printsudoGrid();
+     }
+    //printsudoGrid();
+}
 
 int main() {
 
