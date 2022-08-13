@@ -69,6 +69,16 @@ void printsudoGrid() {
     count2++;
   }
 }
+
+// start menu...
+void starterInfo() {
+    cout << endl << endl << "Welcom to our sudoku game, select an option below: \n"
+         << "    Enter 'p' if you want play manualy \n"
+         << "    Enter 's' if you want to auto solve the pezzul \n"
+         << "    Enter 'a' for animated solution \n"
+         << "    enter 'x' to exit game " << endl << endl;
+}
+
 int main() {
   std::cout << "Hello World!\n";
     printsudoGrid();
