@@ -129,6 +129,30 @@ bool isInSquare(string tempGrid[N][N], int row, int col, string str) {
     }
   }
 }
+// some error messages if in row, col, or square ...
+void errorMessage(string sudoGrid[N][N], string str, int r, int c) {
+    if (isInRow(sudoGrid, str)) {
+         cout << "Is present in row, please try again " << endl;   
+    }
+    if (isInCol(sudoGrid, str)) {
+        cout << "Is present in col, please try again " << endl;
+    }
+    if (isInSquare(sudoGrid, r, c, str)) {
+        cout << "Is present in square, please try again " << endl;
+    }
+        
+}
+// more error messages...
+void edgeCheck(int r, int c) {
+    if (r < 0 || r > 8) {
+        cout << "Invalid row... try again " << endl;
+        cout << "Enter row and col between 0 and 8 ";
+    }
+    if (c < 0 || c > 8) {
+        cout << "Invalid column... try again " << endl;
+        cout << "Enter row and col between 0 and 8 ";
+    }
+}
 int main() {
     starterInfo();
     printsudoGrid();
