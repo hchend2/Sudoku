@@ -79,7 +79,18 @@ void starterInfo() {
          << "    enter 'x' to exit game " << endl << endl;
 }
 
+// swap two rows...
+void swapRows(string tempGrid[rows][cols], int row1, int row2) {
+  tempGrid = sudoGrid;
+  string tmp = "";
+  for (int i = 0; i < cols; i++) {
+    tmp = tempGrid[row1][i];
+    tempGrid[row1][i] = tempGrid[row2][i];
+    tempGrid[row2][i] = tmp;
+  }
+}
+
 int main() {
-  std::cout << "Hello World!\n";
+    starterInfo();
     printsudoGrid();
 }

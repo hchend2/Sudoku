@@ -69,7 +69,28 @@ void printsudoGrid() {
     count2++;
   }
 }
+
+// start menu...
+void starterInfo() {
+    cout << endl << endl << "Welcom to our sudoku game, select an option below: \n"
+         << "    Enter 'p' if you want play manualy \n"
+         << "    Enter 's' if you want to auto solve the pezzul \n"
+         << "    Enter 'a' for animated solution \n"
+         << "    enter 'x' to exit game " << endl << endl;
+}
+
+// swap two rows...
+void swapRows(string tempGrid[rows][cols], int row1, int row2) {
+  tempGrid = sudoGrid;
+  string tmp = "";
+  for (int i = 0; i < cols; i++) {
+    tmp = tempGrid[row1][i];
+    tempGrid[row1][i] = tempGrid[row2][i];
+    tempGrid[row2][i] = tmp;
+  }
+}
+
 int main() {
-  std::cout << "Hello World!\n";
+    starterInfo();
     printsudoGrid();
 }
