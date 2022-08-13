@@ -26,8 +26,6 @@ string sudoGrid[N][N] = {
 };
 
 // print sudoku grid...
-string tempGrid[N][N] = {""};
-
 void printsudoGrid() {
   int count1 = 1;
   int count2 = 1;
@@ -115,6 +113,70 @@ bool isInCol(string tempGrid[N][N], string str) {
     }
   }
   return false; // not present in col... 
+}
+// check if in 3x3 square...
+bool isInSquare(string tempGrid[N][N], int row, int col, string str) {
+
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+      if (tempGrid[row][col] == str) {
+        return true; // present in square...
+      }
+    }
+  }
+  return false; // not present in square...
+}
+// some error messages if in row, col, or square ...
+void errorMessage(string sudoGrid[N][N], string str, int r, int c) {
+    if (isInRow(sudoGrid, str)) {
+         cout << "Is present in row, please try again " << endl;   
+    }
+    if (isInCol(sudoGrid, str)) {
+        cout << "Is present in col, please try again " << endl;
+    }
+    if (isInSquare(sudoGrid, r, c, str)) {
+        cout << "Is present in square, please try again " << endl;
+    }
+        
+}
+// more error messages...
+void edgeCheck(int r, int c) {
+    if (r < 0 || r > 8) {
+        cout << "Invalid row... try again " << endl;
+        cout << "Enter row and col between 0 and 8 ";
+    }
+    if (c < 0 || c > 8) {
+        cout << "Invalid column... try again " << endl;
+        cout << "Enter row and col between 0 and 8 ";
+    }
+}
+// game logic...
+void play() {
+    int r, c, num;
+    cout << "Enter row and col between 0 and 8 ";
+    cin >> r >> c;
+    edgeCheck(r, c);
+    cout << "Enter number between 0 and 9 ";
+    cin >> num;
+    string str = to_string(num);
+    errorMessage(sudoGrid, str, r, c);
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            sudoGrid[r][c] = to_string(num);
+        }
+    }
+}
+// first random number...
+int rand1() {
+  srand((unsigned)time(0));
+  int num = rand() % 9;
+  return num;
+}
+// second random number...
+int rand2() {
+  srand((unsigned)time(0));
+  int num = rand() % rand1();
+  return num;
 }
 
 int main() {

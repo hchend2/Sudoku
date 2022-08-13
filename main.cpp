@@ -166,6 +166,18 @@ void play() {
         }
     }
 }
+// first random number...
+int rand1() {
+  srand((unsigned)time(0));
+  int num = rand() % 9;
+  return num;
+}
+// second random number...
+int rand2() {
+  srand((unsigned)time(0));
+  int num = rand() % rand1();
+  return num;
+}
 
 int main() {
     starterInfo();
