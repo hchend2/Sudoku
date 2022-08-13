@@ -189,6 +189,18 @@ bool sudokuGridIsFull(string sudoGrid[][N]) {
     }
     return true; // sudoGrid is full...
 }
+// check if a cell is empty or not ...
+void isCellEmpty(string sudoGrid[][N]) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (sudoGrid[i][j] != "") {
+                cout << "Cell occupied. Please select another cell *** " << endl;
+                return ;
+            }
+        }
+    }
+    return;
+}
 
 int main() {
     starterInfo();
