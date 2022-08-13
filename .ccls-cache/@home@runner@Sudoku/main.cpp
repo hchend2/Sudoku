@@ -178,6 +178,17 @@ int rand2() {
   int num = rand() % rand1();
   return num;
 }
+// check if the grid is full or not ...
+bool sudokuGridIsFull(string sudoGrid[][N]) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (sudoGrid[i][j] == "") {
+                return false; // sudogrid not full...
+            }
+        }
+    }
+    return true; // sudoGrid is full...
+}
 
 int main() {
     starterInfo();
