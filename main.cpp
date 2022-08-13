@@ -90,6 +90,17 @@ void swapRows(string tempGrid[rows][cols], int row1, int row2) {
   }
 }
 
+// swap two cols...
+void swapCols(string tempGrid[rows][cols], int col1, int col2) {
+  tempGrid = sudoGrid;
+  string tmp = "";
+  for (int j = 0; j < rows; j++) {
+    tmp = tempGrid[j][col1];
+    tempGrid[j][col1] = tempGrid[j][col2];
+    tempGrid[j][col2] = tmp;
+  }
+}
+
 int main() {
     starterInfo();
     printsudoGrid();
